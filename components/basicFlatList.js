@@ -75,8 +75,8 @@ export default class BasicFlatList extends Component
     }
 
     clickHandler = () =>{
-        Alert.alert("Floating button clicked");
-        //this.refs.addModal.showAddItem();
+        
+        this.refs.addModal.showAddItem();
     };
 
     renderSeparator = () => {
@@ -93,10 +93,10 @@ export default class BasicFlatList extends Component
       };
 
 
-    refreshFlatList = (deletedKey) =>{
+    refreshFlatList = (activeKey) =>{
         this.setState((prevState) =>{
             return{
-                deletedRowKey:deletedKey
+                deletedRowKey: activeKey
             };
         });
     }
@@ -121,6 +121,9 @@ export default class BasicFlatList extends Component
                     <Image source={require('../images/add.png')} style={styles.floatingButtonStyle} />
 
                 </TouchableOpacity>
+                <AddItem ref={'addModal'} parentFlatList={this}>
+
+                </AddItem>
                 
 
             </View>
